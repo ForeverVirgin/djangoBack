@@ -1,0 +1,7 @@
+{% load static %}
+
+<a href="{{menu_url}}" class="button">{{menu_name}}</a>
+
+{% for m in menu %}
+    <a href="{{m.url}}" class="button" style="margin-left: {{m.level}}px; padding-left: 5px;">{{m.title}}</a>
+{% endfor %}

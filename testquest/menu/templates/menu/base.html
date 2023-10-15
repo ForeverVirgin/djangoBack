@@ -1,0 +1,24 @@
+{% load static %}
+
+{% load menu_tags %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+    <link type="text/css" href="{% static 'menu/css/styles.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+    <div class = "container">
+        {% block main_menu %}
+        <a href="/" class="button">Главная страница</a>
+        {% draw_menu "Biology" request.path %}
+        {% draw_menu "Chemistry" request.path %}
+        {% endblock main_menu%}
+
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+.button{
+    width: 200px;
+    background-color: rgb(61, 39, 20);
+    color: rgb(121, 101, 84);
+    display: block;
+    text-align: left;
+    text-decoration: None;
+    margin: 5px;
+
+}
+
+body{
+    background-color: rgb(121, 101, 84);
+}
