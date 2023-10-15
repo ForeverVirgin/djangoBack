@@ -3,22 +3,22 @@ from django import template
 from menu.models import *
 
 register = template.Library()
-actual_menu_name = ""
-actual_menu_items = []
+actual_menu_names = []
+actual_menus_items = []
 
 @register.inclusion_tag('menu/menu_elements.html')
 def draw_menu(menu_name, url):
-    global actual_menu_name
-    global actual_menu_items
+    global actual_menu_names
+    global actual_menus_items
     url = url.split("/")
     menu_opened = url[2:-1]
-    if menu_name == actual_menu_name:
-        items = actual_menu_items
+    if menu_name in actual_menu_names:
+        items = actual_menus_items[actual_menu_names.index(menu_name)]
     else:
-        actual_menu_name = menu_name
+        actual_menu_names.append(menu_name)
         try:
             items = Item.objects.filter(menu=Menu.objects.get(title=menu_name))
-            actual_menu_items = items
+            actual_menus_items.append(items)
         except Menu.DoesNotExist:
             print("Menu with this name does not exist")
         except Menu.MultipleObjectReturned:
